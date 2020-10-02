@@ -1,0 +1,111 @@
+﻿@model ClassLibrary1.ResultService
+@{
+    ViewBag.Title = "Result";
+}
+
+<h2>Result</h2>
+@if(Model.CheckIfPassed(Model.marks)==true)
+{
+    <span class="h3c">
+        <h2>Congratulations!!You are Passed</h2>
+    </span>
+    <span class="glyohicon glyphicon-user"></span>
+    <h4>Marks Table</h4>
+    <table class="table-bordered">
+        <tr>
+            <th>English</th>
+            <th>Math</th>
+            <th>Science</th>
+            <th>Nepali</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.marks.English)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.marks.Math)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.marks.Science)
+            </td>
+            <td>
+                @Html.DisplayFor(model=>model.marks.Nepali)
+            </td>
+        </tr>
+            
+      
+    </table>
+
+    <br/>
+    <h4>Percentage:</h4>@Model.Percentage(Model.marks)
+}
+else if(Model.CheckIfPassed(Model.marks)==false)
+{
+    <span class="h3c">
+        <h4 class="danger"> Nice Try !! Good Luck For Your Future </h4>
+        <table class="table-bordered">
+            <tr>
+                <th>English</th>
+                <th>Math</th>
+                <th>Science</th>
+                <th>Nepali</th>
+            </tr>
+            <tr>
+                @if (Model.marks.English < 40)
+                {
+                    <td>
+                        @Html.DisplayFor(model => model.marks.English)
+                    </td>
+                }
+                else
+                {
+                    <td class="h4c">
+                        @Html.DisplayFor(model => model.marks.English)
+                    </td>
+                }
+                @if (Model.marks.Math < 40)
+                {
+                    <td>
+                        @Html.DisplayFor(model => model.marks.Math)
+                    </td>
+                }
+                else
+                {
+                    <td class="h4c">
+                        @Html.DisplayFor(model => model.marks.Nepali)
+                    </td>
+                }
+                @if (Model.marks.Nepali < 40)
+                {
+                    <td>
+                        @Html.DisplayFor(model => model.marks.Nepali)
+                    </td>
+                }
+                else
+                {
+                    <td class="h4c">
+                        @Html.DisplayFor(model => model.marks.Math)
+                    </td>
+                }
+                @if (Model.marks.Nepali < 40)
+                {
+                    <td>
+                        @Html.DisplayFor(model => model.marks.Science)
+                    </td>
+                }
+                else
+                {
+                    <td class="h4c">
+                        @Html.DisplayFor(model => model.marks.Science);
+                    </td>
+                }
+
+            </tr>
+            <h4>Percentage:</h4>@Model.Percentage(Model.marks)
+</span>
+}
+else
+{
+    <h4>Symbol Number not found.</h4>
+}
+

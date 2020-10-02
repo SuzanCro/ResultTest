@@ -1,0 +1,20 @@
+﻿
+@model ClassLibrary1.ResultService
+@{
+    ViewBag.Title = "Result";
+}
+
+<h2>Result</h2>
+@if (Model.CheckIfPassed(Model.marks) == true)
+{
+    <span class="h3c">
+        <h2>Congratulations!!You are Passed</h2>
+    </span>
+}
+else
+{
+    <span class="h3c">
+        <h2>Symbol number not found</h2>
+    </span>
+}
+

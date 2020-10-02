@@ -1,0 +1,23 @@
+﻿@model ClassLibrary1.ResultService
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<span class="h3c">
+    <h2>Result is published!!!</h2>
+</span>
+<span class="padme">
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+   <span class="glyphicon-bookmark"></span>
+    <h4>
+        Please Enter your Symbol no.
+    </h4>
+    <br/>
+    @Html.EditorFor(model => model.details.SymbolNo, new { htmlAttributes = new { @class = "form-control"} })
+        <input type="submit" class="btn btn-primary" value="Submit" />
+}
+    </span>
+   
